@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>History Quest – Class 7 CBSE</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root{--bg:#EEF3F1;--grid:#DCE5E1;--card:#FFFFFF;--ink:#14213D;--mute:#5B6B7F;--line:#CBD6D2;--energy:#FFB703;--energy-d:#B87F00;--ok:#1F8A5F;--okbg:#DDF3E9;--bad:#C93A52;--badbg:#FBE1E5;--accent:#14213D;--accent-ink:#FFFFFF;--code:#14213D;--code-ink:#E8F1EE;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1A22;--grid:#172530;--card:#16242E;--ink:#E8F1EE;--mute:#93A5B3;--line:#2A3C48;--energy:#FFC233;--energy-d:#FFC233;--ok:#4FD1A0;--okbg:#14382D;--bad:#FF7A90;--badbg:#42202A;--accent:#FFC233;--accent-ink:#14213D;--code:#0A1117;--code-ink:#E8F1EE}}
+:root[data-theme="dark"]{--bg:#0F1A22;--grid:#172530;--card:#16242E;--ink:#E8F1EE;--mute:#93A5B3;--line:#2A3C48;--energy:#FFC233;--energy-d:#FFC233;--ok:#4FD1A0;--okbg:#14382D;--bad:#FF7A90;--badbg:#42202A;--accent:#FFC233;--accent-ink:#14213D;--code:#0A1117;--code-ink:#E8F1EE}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background-color:var(--bg);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:28px 28px;color:var(--ink);font-family:"Bricolage Grotesque",system-ui,sans-serif;font-size:16px;line-height:1.45;min-height:100vh}
+main{max-width:640px;margin:0 auto;padding:20px 16px 48px}
+h1,h2,h3,p{margin:0}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.logo{font-weight:800;font-size:24px;letter-spacing:-.02em}
+.lvl{font-family:"JetBrains Mono",monospace;font-weight:700;font-size:13px;background:var(--card);border:2px solid var(--ink);border-radius:8px;padding:4px 10px}
+.xpbar{height:6px;background:var(--line);border-radius:3px;margin:-8px 0 18px;overflow:hidden}
+.xpbar i{display:block;height:100%;background:var(--ok);transition:width .4s}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:4px 4px 0 var(--ink)}
+.row{display:flex;gap:14px;flex-wrap:wrap}
+.row>.card{flex:1 1 240px;margin-bottom:14px}
+.label{font-size:14px;color:var(--mute);font-weight:500;margin-bottom:6px}
+.big{font-size:40px;font-weight:800;line-height:1;letter-spacing:-.03em}
+.cells{display:flex;gap:3px;margin:8px 0}
+.cell{flex:1;height:30px;border:2px solid var(--ink);border-radius:3px;background:transparent}
+.cell.on{background:var(--energy)}
+.cell.charging{background:repeating-linear-gradient(135deg,var(--energy) 0 4px,transparent 4px 8px);animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.45}}
+.small{font-size:14px;color:var(--mute)}
+.week{display:flex;gap:6px;margin-top:12px}
+.day{flex:1;text-align:center;font-size:12px;color:var(--mute)}
+.day b{display:block;height:26px;border:2px solid var(--ink);border-radius:50%;margin-bottom:3px;line-height:22px;font-size:13px;color:var(--accent-ink)}
+.day.done b{background:var(--ok);border-color:var(--ok)}
+.day.today b{border-style:dashed}
+.btn{font:inherit;font-weight:700;cursor:pointer;border:2px solid var(--ink);background:var(--accent);color:var(--accent-ink);padding:12px 18px;border-radius:10px;width:100%;box-shadow:3px 3px 0 var(--ink);transition:transform .08s,box-shadow .08s}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.btn.alt{background:var(--card);color:var(--ink)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.btn:focus-visible,.opt:focus-visible{outline:3px solid var(--energy-d);outline-offset:2px}
+.topics{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.topics .btn{text-align:left;font-weight:700;padding:12px}
+.topics small{display:block;font-weight:500;opacity:.8}
+pre{font-family:"JetBrains Mono",monospace;font-size:14px;background:var(--code);color:var(--code-ink);border-radius:10px;padding:14px;overflow-x:auto;margin:12px 0;line-height:1.55}
+.opts{display:grid;gap:10px}
+.opt{font:inherit;font-family:"JetBrains Mono",monospace;font-size:14px;text-align:left;cursor:pointer;background:var(--card);color:var(--ink);border:2px solid var(--ink);border-radius:10px;padding:12px 14px}
+.opt.ok{background:var(--okbg);border-color:var(--ok)}
+.opt.bad{background:var(--badbg);border-color:var(--bad)}
+.fb{border-radius:10px;padding:12px 14px;margin:14px 0 10px;font-size:15px}
+.fb.ok{background:var(--okbg)}.fb.bad{background:var(--badbg)}
+.hdr{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:6px}
+.mini{display:flex;gap:2px;align-items:center}
+.mini span{width:10px;height:14px;border:2px solid var(--ink);border-radius:2px}
+.mini span.on{background:var(--energy)}
+.link{background:none;border:0;font:inherit;color:var(--mute);cursor:pointer;text-decoration:underline;padding:4px 0}
+.badge{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;background:var(--energy);color:#14213D;padding:2px 8px;border-radius:6px}
+.prog{height:10px;border:2px solid var(--ink);border-radius:6px;overflow:hidden;margin-bottom:12px;background:var(--card)}.prog i{display:block;height:100%;background:var(--ok);transition:width .4s}
+.pop{position:fixed;left:50%;top:38%;font-weight:800;font-size:34px;pointer-events:none;animation:floatup 1s ease-out forwards;z-index:9;white-space:nowrap}
+@keyframes floatup{from{opacity:1;transform:translate(-50%,0) scale(.8)}to{opacity:0;transform:translate(-50%,-80px) scale(1.3)}}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-7px)}75%{transform:translateX(7px)}}
+@keyframes bob{50%{transform:translateY(-5px)}}
+.fl{display:inline-block;animation:bob 1.6s ease-in-out infinite}
+.mascot{display:flex;gap:12px;align-items:center;margin-bottom:14px}.cody{width:68px;height:68px;flex:none;animation:bob 2.4s ease-in-out infinite}.name{font-weight:800;font-size:14px;margin-bottom:2px}
+.say{background:var(--card);border:2px solid var(--ink);border-radius:12px;padding:8px 12px;font-size:15px;font-weight:500}
+.conf{position:fixed;top:-14px;width:8px;height:12px;z-index:9;pointer-events:none;animation:fall 1.5s ease-in forwards}
+@keyframes fall{to{top:105vh;opacity:.8}}
+.topics .btn:hover,.opt:hover:not(:disabled){transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.opt{transition:transform .08s,box-shadow .08s}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.conf{display:none}}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+(function(){
+var MAXE=15, REGEN=60*1000, KEY="history7.v1";
+var Q=[{t:"Changes",q:"Who was Al-Idrisi, who made a world map in 1154?",c:"",o:["An Arab geographer", "A Chola king", "A Mughal artist", "A Persian poet"],a:0,e:"Al-Idrisi was an Arab cartographer. His 1154 map is one of the sources for the world as known then."},
+{t:"Changes",q:"In the 13th century, Minhaj-i-Siraj used the word 'Hindustan' for which area?",c:"",o:["Punjab, Haryana and the Ganga-Yamuna doab", "The whole subcontinent", "Only Bengal", "Only the Deccan"],a:0,e:"His 'Hindustan' was a smaller region than the India we mean today."},
+{t:"Changes",q:"What were the assemblies that made rules for each jati called?",c:"",o:["Jati panchayats", "Sabhas of kings", "Ulama", "Mandals of nobles"],a:0,e:"Jati panchayats framed rules for their jati and settled disputes."},
+{t:"Changes",q:"James Mill divided Indian history into which three periods?",c:"",o:["Hindu, Muslim and British", "Ancient, medieval and modern", "Early, middle and late", "Vedic, Mauryan and Gupta"],a:0,e:"Historians later criticised this religion-based division."},
+{t:"Changes",q:"Which of these was introduced to the subcontinent only in the last 500 years or so?",c:"",o:["Potato", "Wheat", "Rice", "Cotton"],a:0,e:"Potatoes, corn, chillies, tea and coffee came in the period after 1500."},
+{t:"New Kingdoms",q:"Which ritual did Dantidurga perform to claim Kshatriya status?",c:"",o:["Hiranya-garbha", "Ashvamedha", "Rajasuya", "Vajapeya"],a:0,e:"Dantidurga, the Rashtrakuta, performed the hiranya-garbha (golden womb) ritual."},
+{t:"New Kingdoms",q:"The Tripartite Struggle was fought for control of which city?",c:"",o:["Kannauj", "Delhi", "Thanjavur", "Pataliputra"],a:0,e:"The Gurjara-Pratiharas, Rashtrakutas and Palas fought over Kannauj."},
+{t:"New Kingdoms",q:"Which Chola king built the Rajarajeshvara (Brihadeshvara) temple at Thanjavur?",c:"",o:["Rajaraja I", "Rajendra I", "Dantidurga", "Vijayalaya"],a:0,e:"Rajaraja I completed the temple around 1010."},
+{t:"New Kingdoms",q:"What was the assembly of Brahmana landholders in a Chola village called?",c:"",o:["Sabha", "Sangha", "Durbar", "Ulama"],a:0,e:"The sabha looked after the village's affairs, like irrigation and roads."},
+{t:"New Kingdoms",q:"In which year was Prithviraj Chauhan defeated at the Second Battle of Tarain?",c:"",o:["1192", "1026", "1526", "1757"],a:0,e:"Muhammad of Ghor defeated him in 1192."},
+{t:"Delhi Sultans",q:"Who founded the Delhi Sultanate in 1206?",c:"",o:["Qutbuddin Aybak", "Balban", "Alauddin Khalji", "Muhammad Tughluq"],a:0,e:"Qutbuddin Aybak began the Mamluk (Slave) dynasty."},
+{t:"Delhi Sultans",q:"Who was the only woman to rule the Delhi Sultanate?",c:"",o:["Raziyya", "Rani Durgavati", "Mirabai", "Nur Jahan"],a:0,e:"Raziyya succeeded her father, Iltutmish, in 1236."},
+{t:"Delhi Sultans",q:"Which Sultan controlled the prices of goods in the Delhi market?",c:"",o:["Alauddin Khalji", "Balban", "Firuz Shah Tughluq", "Raziyya"],a:0,e:"Alauddin Khalji fixed prices to feed his large army cheaply."},
+{t:"Delhi Sultans",q:"Muhammad Tughluq shifted his capital from Delhi to which place?",c:"",o:["Daulatabad", "Agra", "Lahore", "Fatehpur Sikri"],a:0,e:"Daulatabad, in the Deccan, was meant to be a more central capital."},
+{t:"Delhi Sultans",q:"Who completed the Qutb Minar that Aybak had begun?",c:"",o:["Iltutmish", "Balban", "Akbar", "Shah Jahan"],a:0,e:"Iltutmish finished the tower after Aybak's death."},
+{t:"Mughals",q:"In which year did Babur win the First Battle of Panipat?",c:"",o:["1526", "1556", "1192", "1757"],a:0,e:"Babur defeated Ibrahim Lodi at Panipat in 1526."},
+{t:"Mughals",q:"Which system gave Mughal officers a rank called zat?",c:"",o:["Mansabdari", "Zamindari", "Iqta", "Jagirdari only"],a:0,e:"A mansabdar's zat showed his rank and salary."},
+{t:"Mughals",q:"What was the Ibadat Khana at Fatehpur Sikri used for?",c:"",o:["Discussions among scholars of different religions", "Storing grain", "Training soldiers", "Holding tax records"],a:0,e:"Akbar invited scholars of many faiths to debate there."},
+{t:"Mughals",q:"Who wrote the Akbar Nama?",c:"",o:["Abul Fazl", "Todar Mal", "Birbal", "Tansen"],a:0,e:"Abul Fazl was Akbar's friend and court historian."},
+{t:"Mughals",q:"What did Akbar's idea of sulh-i-kul mean?",c:"",o:["Universal peace", "Land survey", "Tax collection", "Military rank"],a:0,e:"Sulh-i-kul meant peace with all, whatever their religion."},
+{t:"Buildings",q:"The Taj Mahal was built in memory of whom?",c:"",o:["Mumtaz Mahal", "Nur Jahan", "Jodha Bai", "Raziyya"],a:0,e:"Shah Jahan built it for his wife Mumtaz Mahal."},
+{t:"Buildings",q:"Which building style places horizontal beams across pillars?",c:"",o:["Trabeate", "Arcuate", "Gopuram", "Dome"],a:0,e:"Trabeate means post and lintel. Arcuate buildings use arches."},
+{t:"Buildings",q:"Which Mughal emperor built the Red Fort in Delhi?",c:"",o:["Shah Jahan", "Babur", "Akbar", "Aurangzeb"],a:0,e:"Shah Jahan built the fort when he moved his capital to Shahjahanabad."},
+{t:"Buildings",q:"The ruins of the Vijayanagara capital are at which place?",c:"",o:["Hampi", "Thanjavur", "Khajuraho", "Agra"],a:0,e:"The ruins at Hampi are a UNESCO World Heritage Site."},
+{t:"Buildings",q:"The mihrab of a mosque points towards which place?",c:"",o:["Mecca", "Jerusalem", "Delhi", "Medina"],a:0,e:"The mihrab marks the direction of prayer, towards the Kaaba in Mecca."},
+{t:"Towns and Trade",q:"Which method was used to make Chola bronze images?",c:"",o:["Lost-wax technique", "Stone carving", "Weaving", "Block printing"],a:0,e:"Wax models were covered in clay, melted out, and filled with metal."},
+{t:"Towns and Trade",q:"Which Gujarat port was a gateway for trade with West Asia?",c:"",o:["Surat", "Puri", "Kolkata", "Hampi"],a:0,e:"Surat was a major port for West Asian trade."},
+{t:"Towns and Trade",q:"The word 'calico' comes from which city?",c:"",o:["Calicut", "Calcutta", "Cuddalore", "Cochin"],a:0,e:"Cotton cloth from Calicut became known in Europe as calico."},
+{t:"Towns and Trade",q:"Which city was famous for fine muslin cloth?",c:"",o:["Dhaka", "Jaipur", "Agra", "Lahore"],a:0,e:"Dhaka muslin was prized for being extremely fine."},
+{t:"Towns and Trade",q:"Masulipatnam was an important centre of which trade?",c:"",o:["Textiles", "Spices from Kerala only", "Iron tools", "Horses only"],a:0,e:"Masulipatnam on the Coromandel coast exported cotton cloth."},
+{t:"Tribes and Nomads",q:"Which people were traders who carried grain on bullocks?",c:"",o:["Banjaras", "Gonds", "Ahoms", "Bhils"],a:0,e:"Banjaras were the most important trader nomads."},
+{t:"Tribes and Nomads",q:"The Gonds lived mainly in which forested region?",c:"",o:["Gondwana", "Gujarat", "Bengal", "Kerala"],a:0,e:"Gondwana was named after the Gonds."},
+{t:"Tribes and Nomads",q:"From which present-day country did the Ahoms migrate to Assam?",c:"",o:["Myanmar", "Nepal", "China", "Bhutan"],a:0,e:"The Ahoms came in the 13th century and settled in the Brahmaputra valley."},
+{t:"Tribes and Nomads",q:"Rani Durgavati ruled which kingdom?",c:"",o:["Garha Katanga", "Ahom kingdom", "Vijayanagara", "Malwa"],a:0,e:"She fought the Mughal general Asaf Khan in 1564."},
+{t:"Tribes and Nomads",q:"The Ahom state depended on forced labour called what?",c:"",o:["Paiks", "Zamindars", "Mansabs", "Jagirs"],a:0,e:"Those who had to serve the state were called paiks."},
+{t:"Bhakti and Sufi",q:"The Alvars were devotees of which god?",c:"",o:["Vishnu", "Shiva", "Durga", "Surya"],a:0,e:"Alvars were Tamil devotees of Vishnu. Nayanars worshipped Shiva."},
+{t:"Bhakti and Sufi",q:"The Nayanars were devotees of which god?",c:"",o:["Shiva", "Vishnu", "Rama", "Ganesha"],a:0,e:"Nayanars were Tamil saints devoted to Shiva."},
+{t:"Bhakti and Sufi",q:"Basavanna started which movement in Karnataka?",c:"",o:["Virashaiva", "Chishti", "Bhagavata", "Sikh"],a:0,e:"Basavanna and others founded the Virashaiva (Lingayat) movement."},
+{t:"Bhakti and Sufi",q:"Kabir's teachings are collected in which compilation?",c:"",o:["Bijak", "Akbar Nama", "Ramcharitmanas", "Rajatarangini"],a:0,e:"The Bijak is a collection of Kabir's verses."},
+{t:"Bhakti and Sufi",q:"Mirabai was a devotee of which deity?",c:"",o:["Krishna", "Shiva", "Vishnu as Narasimha", "Durga"],a:0,e:"Mirabai wrote songs of devotion to Krishna."}
+];
+var TOPICS=[["Class 7 History",["Changes", "New Kingdoms", "Delhi Sultans", "Mughals", "Buildings", "Towns and Trade", "Tribes and Nomads", "Bhakti and Sufi"]]];
+var S,sess=null,tick;
+
+function dk(d){d=d||new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function ago(n){var d=new Date();d.setDate(d.getDate()-n);return dk(d)}
+function load(){var s=null;try{s=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+ S=Object.assign({xp:0,energy:MAXE,at:Date.now(),streak:0,best:0,last:"",days:[]},s||{});
+ if(S.last&&S.last!==dk()&&S.last!==ago(1))S.streak=0;regen();}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function regen(){var now=Date.now();if(S.energy>=MAXE){S.at=now;return}
+ var n=Math.floor((now-S.at)/REGEN);if(n>0){S.energy=Math.min(MAXE,S.energy+n);S.at=S.energy>=MAXE?now:S.at+n*REGEN}}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function secs(){return Math.max(0,Math.ceil((S.at+REGEN-Date.now())/1000))}
+function clock(){var s=secs();return Math.floor(s/60)+":"+String(s%60).padStart(2,"0")}
+function cells(){var h="";for(var i=0;i<MAXE;i++){h+='<div class="cell '+(i<S.energy?"on":i===S.energy?"charging":"")+'"></div>'}return h}
+function seed(str){var h=0;for(var i=0;i<str.length;i++)h=(h*31+str.charCodeAt(i))|0;return Math.abs(h)}
+function dailyQs(){var r=seed(dk()),idx=[],i=0;while(idx.length<3){var k=(r+i*5)%Q.length;if(idx.indexOf(k)<0)idx.push(k);i++}return idx.map(function(k){return Q[k]})}
+function shuffle(q){var m=q.o.map(function(x,i){return{x:x,r:i===q.a}});for(var i=m.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=m[i];m[i]=m[j];m[j]=t}return m}
+function lvl(){return Math.floor(S.xp/100)+1}
+function cody(m){var e=m==="sleep"?'<path d="M17 31h12M35 31h12" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/>':'<circle cx="23" cy="31" r="5" fill="var(--ink)"/><circle cx="41" cy="31" r="5" fill="var(--ink)"/>';var mo=m==="worry"?"M23 47q9-8 18 0":m==="sleep"?"M25 44h14":"M22 41q10 9 20 0";return '<svg class="cody" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 14V7" stroke="var(--ink)" stroke-width="3"/><circle cx="32" cy="6" r="4" fill="var(--energy)" stroke="var(--ink)" stroke-width="2"/><rect x="3" y="26" width="6" height="14" rx="3" fill="var(--energy)" stroke="var(--ink)" stroke-width="2"/><rect x="55" y="26" width="6" height="14" rx="3" fill="var(--energy)" stroke="var(--ink)" stroke-width="2"/><rect x="8" y="14" width="48" height="40" rx="12" fill="var(--card)" stroke="var(--ink)" stroke-width="3"/>'+e+'<path d="'+mo+'" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linecap="round"/></svg>'}
+function pop(t,c){var e=document.createElement("div");e.className="pop";e.textContent=t;e.style.color=c;document.body.appendChild(e);setTimeout(function(){e.remove()},1000)}
+function confetti(n){var cs=["#FFB703","#1F8A5F","#C93A52","#4EA8DE","#9B5DE5"];for(var i=0;i<n;i++){var e=document.createElement("i");e.className="conf";e.style.left=Math.random()*100+"%";e.style.background=cs[i%5];e.style.animationDelay=Math.random()*.3+"s";e.style.transform="rotate("+Math.random()*360+"deg)";document.body.appendChild(e);(function(x){setTimeout(function(){x.remove()},1900)})(e)}}
+
+function home(){
+ clearInterval(tick);sess=null;regen();
+ var doneToday=S.last===dk(),wk="",names=["S","M","T","W","T","F","S"];
+ var hr=new Date().getHours(),hl=Math.ceil((new Date().setHours(24,0,0,0)-Date.now())/36e5),mood="happy",msg;
+ if(S.energy<1){mood="sleep";msg="Zzz… I’m recharging. New energy arrives every minute."}
+ else if(doneToday){msg="Great work today! Come back tomorrow for a new daily challenge."}
+ else if(hr>=18){mood="worry";msg=S.streak>0?"Only "+hl+"h left! Finish today’s lesson to save your "+S.streak+"-day streak.":"Only "+hl+"h left today. Start your streak with a 3-question lesson!"}
+ else if(hr<12){msg="Good morning! Today’s daily lesson is ready. It takes about 2 minutes."}
+ else{msg="Hey! Don’t forget today’s daily lesson"+(S.streak>0?". Keep that "+S.streak+"-day streak going!":". Start your streak!")}
+ for(var i=6;i>=0;i--){var d=new Date();d.setDate(d.getDate()-i);var k=dk(d);
+  wk+='<div class="day '+(S.days.indexOf(k)>=0?"done ":"")+(i===0?"today":"")+'"><b>'+(S.days.indexOf(k)>=0?"✓":"")+'</b>'+names[d.getDay()]+'</div>'}
+ var h='<div class="top"><div class="logo">History Quest <span class="small" style="font-size:13px">Class 7</span></div><div class="lvl">LVL '+lvl()+'</div></div>'+
+ '<div class="xpbar"><i style="width:'+(S.xp%100)+'%"></i></div>'+
+ '<div class="mascot">'+cody(mood)+'<div class="say"><div class="name">Cody</div>'+msg+'</div></div>'+
+ '<div class="row"><div class="card"><div class="label">Day streak</div><div class="big">'+S.streak+(S.streak>0?' <span class="fl">🔥</span>':"")+'</div><div class="small">Best: '+S.best+' days</div><div class="week">'+wk+'</div></div>'+
+ '<div class="card"><div class="label">Energy</div><div class="big">'+S.energy+'<span class="small"> / '+MAXE+'</span></div><div class="cells">'+cells()+'</div><div class="small" id="eh">'+(S.energy>=MAXE?"Full. Wrong answers cost 1 energy.":"Next energy in "+clock())+'</div></div></div>'+
+ '<div class="card"><div class="hdr"><h2>Daily challenge</h2><span class="badge">+20 XP · +1 energy</span></div>'+
+ '<p class="small" style="margin-bottom:12px">'+(doneToday?"Done for today. Your streak is safe. Come back tomorrow.":"Solve 3 questions to keep your streak alive.")+'</p>'+
+ '<button class="btn'+(doneToday?"":" fl")+'" id="daily"'+(doneToday?" disabled":"")+'>'+(doneToday?"Completed ✓":"Start daily challenge")+'</button></div>'+
+ '<div class="card"><h2>Courses</h2><p class="small">Pick a topic. Each correct answer gives 10 XP.</p>'+
+ TOPICS.map(function(g){return '<h3 style="margin-top:14px">'+g[0]+'</h3><div class="topics">'+g[1].map(function(t){var n=Q.filter(function(q){return q.t===t}).length;return '<button class="btn alt" data-t="'+t+'">'+t+'<small>'+n+' questions</small></button>'}).join("")+'</div>'}).join("")+'</div>'+
+ '<p class="small" style="text-align:center"><button class="link" id="reset">Reset progress</button></p>';
+ app.innerHTML=h;
+ var d=document.getElementById("daily");if(d&&!doneToday)d.onclick=function(){start(dailyQs(),true,"Daily challenge")};
+ [].forEach.call(document.querySelectorAll("[data-t]"),function(b){b.onclick=function(){var t=b.dataset.t;var qs=Q.filter(function(q){return q.t===t});start(qs,false,t)}});
+ document.getElementById("reset").onclick=function(){if(confirm("Reset all progress?")){S=null;try{localStorage.removeItem(KEY)}catch(e){}load();home()}};
+ tick=setInterval(function(){var b=document.getElementById("eh");if(!b)return;var before=S.energy;regen();if(S.energy!==before){home();return}if(S.energy<MAXE)b.textContent="Next energy in "+clock()},1000);
+}
+
+function start(qs,daily,title){
+ regen();
+ if(S.energy<1){alert("You’re out of energy. Wait for it to recharge, then try again.");return}
+ sess={qs:qs,i:0,ok:0,daily:daily,title:title,m:null,done:false};clearInterval(tick);ask();
+}
+function mini(){var h='<div class="mini">';for(var i=0;i<MAXE;i++)h+='<span class="'+(i<S.energy?"on":"")+'"></span>';return h+"</div>"}
+function ask(){
+ var q=sess.qs[sess.i];sess.m=shuffle(q);sess.done=false;
+ app.innerHTML='<div class="hdr"><button class="link" id="quit">← Quit</button>'+(sess.combo>=2?'<span class="badge">Combo ×'+sess.combo+'</span>':'')+mini()+'</div>'+
+ '<div class="prog"><i style="width:'+(sess.i/sess.qs.length*100)+'%"></i></div>'+
+ '<div class="card"><div class="small">'+esc(sess.title)+' · question '+(sess.i+1)+' of '+sess.qs.length+'</div><h2 style="margin-top:6px">'+esc(q.q)+'</h2>'+
+ (q.c?'<pre>'+esc(q.c)+'</pre>':'<div style="height:12px"></div>')+
+ '<div class="opts">'+sess.m.map(function(o,i){return '<button class="opt" data-i="'+i+'">'+esc(o.x)+'</button>'}).join("")+'</div><div id="fb"></div></div>';
+ document.getElementById("quit").onclick=home;
+ [].forEach.call(document.querySelectorAll(".opt"),function(b){b.onclick=function(){pick(+b.dataset.i)}});
+}
+function pick(i){
+ if(sess.done)return;sess.done=true;
+ var q=sess.qs[sess.i],good=sess.m[i].r,opts=document.querySelectorAll(".opt");
+ [].forEach.call(opts,function(b,j){b.disabled=true;if(sess.m[j].r)b.classList.add("ok");else if(j===i)b.classList.add("bad")});
+ var L0=lvl(),g=0;
+ if(good){sess.combo=(sess.combo||0)+1;g=10+(sess.combo>=3?5:0);S.xp+=g;sess.ok++;pop("+"+g+" XP","var(--ok)");confetti(sess.combo>=3?30:14);if(lvl()>L0)setTimeout(function(){pop("Level up! 🎉","var(--energy-d)");confetti(40)},700)}
+ else{sess.combo=0;S.energy=Math.max(0,S.energy-1);if(S.energy===MAXE-1)S.at=Date.now();pop("−1 ⚡","var(--bad)");document.querySelector(".card").classList.add("shake")}
+ save();
+ var last=sess.i===sess.qs.length-1,out=!good&&S.energy<1;
+ var nxt=out?"See results":last?"Finish":"Next question";
+ document.getElementById("fb").innerHTML='<div class="fb '+(good?"ok":"bad")+'"><b>'+(good?"Correct! "+(sess.combo>=3?"Combo ×"+sess.combo+" · ":"")+"+"+g+" XP":"Not quite. −1 energy.")+'</b><br>'+esc(q.e)+'</div><button class="btn" id="nx">'+nxt+'</button>';
+ var nb=document.getElementById("nx");nb.focus();
+ nb.onclick=function(){if(out||last)finish(out&&!last);else{sess.i++;ask()}};
+}
+function finish(outOfEnergy){
+ var bonus="",won=sess.ok>0||false;
+ if(sess.daily&&!outOfEnergy){
+  var t=dk();
+  if(S.last!==t){S.streak=(S.last===ago(1))?S.streak+1:1;S.best=Math.max(S.best,S.streak);S.last=t;S.xp+=20;S.energy=Math.min(MAXE,S.energy+1);
+   if(S.days.indexOf(t)<0)S.days.push(t);S.days=S.days.slice(-30);
+   bonus='<div class="fb ok"><b>Streak: '+S.streak+' day'+(S.streak>1?"s":"")+' 🔥</b><br>Daily bonus: +20 XP and +1 energy.</div>'}
+ }else if(sess.daily&&outOfEnergy){bonus='<div class="fb bad"><b>Daily challenge not finished.</b><br>Wait for energy to recharge, then try again. Your streak is still waiting.</div>'}
+ save();
+ app.innerHTML='<div class="card" style="text-align:center"><div style="font-size:52px" class="fl">'+(outOfEnergy?"🪫":sess.ok===sess.qs.length?"🏆":"⚡")+'</div><div class="small">'+esc(sess.title)+'</div><div class="big" style="margin:10px 0">'+sess.ok+' / '+sess.qs.length+'</div>'+
+ '<p>'+(outOfEnergy?"You ran out of energy. It recharges 1 every minute.":sess.ok===sess.qs.length?"Perfect run. Nice work.":"Good effort. Review the explanations and try again.")+'</p>'+bonus+
+ '<div style="margin-top:14px"><button class="btn" id="hm">Back to home</button></div></div>';
+ document.getElementById("hm").onclick=home;if(!outOfEnergy&&sess.ok>0)confetti(sess.ok===sess.qs.length?50:24);
+}
+var app=document.getElementById("app");
+load();save();home();
+})();
+</script>
+</body>
+</html>
